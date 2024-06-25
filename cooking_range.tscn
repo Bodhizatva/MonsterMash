@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://6q4kswa41j5n"]
+
+[ext_resource type="Texture2D" uid="uid://bs8dkw6nm6p1q" path="res://CookingRange.png" id="1_fconj"]
+
+[node name="CookingRange" type="Node2D" groups=["StoveSmall"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_fconj")

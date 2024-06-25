@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwfsfm44amcj3"]
+
+[ext_resource type="Script" path="res://WorkerBaseNode.gd" id="1_3g7fa"]
+[ext_resource type="Texture2D" uid="uid://1b37qq2ibrp3" path="res://Davide_con_la_testa_di_Golia_(particolare).jpg" id="2_4uebv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqtb4"]
+size = Vector2(31, 37)
+
+[node name="WorkerBaseNode" type="CharacterBody2D"]
+script = ExtResource("1_3g7fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0465335, 0.0465335)
+texture = ExtResource("2_4uebv")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 90.5
+path_max_distance = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dqtb4")
+disabled = true

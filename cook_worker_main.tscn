@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcsykd1m3vwuk"]
+
+[ext_resource type="Texture2D" uid="uid://h2148qcabc41" path="res://images (1).jpg" id="1_540ti"]
+[ext_resource type="Script" path="res://cook_worker.gd" id="1_j2ipl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lytcr"]
+
+[node name="CookWorkerMain" type="CharacterBody2D"]
+script = ExtResource("1_j2ipl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.224726, 0.224726)
+texture = ExtResource("1_540ti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lytcr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

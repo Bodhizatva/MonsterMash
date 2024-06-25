@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://24snchtboe1i"]
+
+[ext_resource type="Script" path="res://MainScript.gd" id="1_j71mh"]
+[ext_resource type="PackedScene" uid="uid://vaw37dk83o76" path="res://Customer/customer_character_body_2d.tscn" id="2_1wcgn"]
+[ext_resource type="Script" path="res://TableLogicNode.gd" id="3_uhtuy"]
+[ext_resource type="Texture2D" uid="uid://bpso2xyog3qbs" path="res://2b1ead5cad6fdf28208d8e8fe746042b.jpg" id="4_3oe2s"]
+[ext_resource type="Script" path="res://CounterLogicNode.gd" id="4_u62uv"]
+[ext_resource type="PackedScene" uid="uid://dwfsfm44amcj3" path="res://worker_base_node.tscn" id="5_q1rnw"]
+[ext_resource type="PackedScene" uid="uid://dcsykd1m3vwuk" path="res://cook_worker_main.tscn" id="7_8ogpc"]
+[ext_resource type="Script" path="res://StoveLogicNode.gd" id="8_i8c0j"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="8_x4crf"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1ct5x"]
+vertices = PackedVector2Array(10, -59, 9, -224, 603, -225, 503, -62, 603, 11, 504, 10, 1426, 12, 1429, 1269, 14, 1269, 11, 85, 11, 9)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(4, 6, 7, 8, 9), PackedInt32Array(5, 4, 9, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, -1, 494.118, 0.374573, 493, -52, 1, -49, -1, -234, 614, -236, 612.9, 0.705688, 1436, 3, 1439, 1279, 4, 1279, 1.20239, 85.3723)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_j71mh")
+
+[node name="CustomerCharacterBody2D" parent="." instance=ExtResource("2_1wcgn")]
+position = Vector2(143, 154)
+
+[node name="WorkerBaseNode" parent="." instance=ExtResource("5_q1rnw")]
+position = Vector2(415, 120)
+
+[node name="CookWorkerMain" parent="." instance=ExtResource("7_8ogpc")]
+position = Vector2(1003, 217)
+
+[node name="TableLogicNode" type="Node2D" parent="."]
+position = Vector2(251, 188)
+script = ExtResource("3_uhtuy")
+
+[node name="TablePosition1" type="Node2D" parent="TableLogicNode"]
+top_level = true
+position = Vector2(163, 310)
+
+[node name="TablePosition2" type="Node2D" parent="TableLogicNode"]
+top_level = true
+position = Vector2(372, 310)
+
+[node name="TablePosition3" type="Node2D" parent="TableLogicNode"]
+top_level = true
+position = Vector2(163, 482)
+
+[node name="TablePosition4" type="Node2D" parent="TableLogicNode"]
+top_level = true
+position = Vector2(374, 482)
+
+[node name="CounterLogicNode" type="Node2D" parent="."]
+position = Vector2(720, 172)
+script = ExtResource("4_u62uv")
+
+[node name="CounterTexture" type="Sprite2D" parent="CounterLogicNode"]
+position = Vector2(0, 132)
+scale = Vector2(0.0903901, 0.273103)
+texture = ExtResource("4_3oe2s")
+
+[node name="Counter1" type="Node2D" parent="CounterLogicNode"]
+position = Vector2(-13, 19)
+
+[node name="Counter2" type="Node2D" parent="CounterLogicNode"]
+position = Vector2(-13, 42)
+
+[node name="Counter3" type="Node2D" parent="CounterLogicNode"]
+position = Vector2(-13, 66)
+
+[node name="StoveLogicNode" type="Node2D" parent="."]
+position = Vector2(835, 149)
+script = ExtResource("8_i8c0j")
+
+[node name="Stove1" type="Node2D" parent="StoveLogicNode"]
+position = Vector2(4, 2)
+
+[node name="Stove2" type="Node2D" parent="StoveLogicNode"]
+position = Vector2(69, 0)
+
+[node name="Stove3" type="Node2D" parent="StoveLogicNode"]
+position = Vector2(153, 0)
+
+[node name="Stove4" type="Node2D" parent="StoveLogicNode"]
+position = Vector2(222, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1440
+limit_bottom = 1280
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("8_x4crf")
+can_pan = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+z_index = -10
+navigation_polygon = SubResource("NavigationPolygon_1ct5x")
+constrain_avoidance = true
+avoidance_layers = 8
